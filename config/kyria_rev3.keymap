@@ -30,7 +30,7 @@
 #define LR_DOWN LA(DOWN)
 #define LR_UP LA(UP)
 
-&ext_power {<EP_ON>};
+
 
 &left_encoder {
     resolution = <2>;
@@ -79,12 +79,12 @@
 // ---------------------------------------------------------------------------------------------------------------------------------
 // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   | bksp |
 // | TAB/FN|  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   '   |ent/fn|
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   | ---     |  ctrl   |  |   ctrl  |  blank  |  N   |  M    |  ,    |  .   |   /   |shft/;|
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   | &ext_power EP_ON     |  ctrl   |  |   ctrl  |  blank  |  N   |  M    |  ,    |  .   |   /   |shft/;|
 //                     | ENC  |Alt/En| Ctrl |  Nav    |   del   |  |   bksp  |  num    | spc  | Iso   | ENC2  |
 			bindings = <
 	&kp ESC     &kp Q       &kp W &kp E &kp R &kp T                                            &kp Y &kp U  &kp I     &kp O   &kp P         &kp BSPC
 	&lt FNC TAB &hm LSHFT A &kp S &kp D &kp F &kp G                                            &kp H &kp J  &kp K     &kp L   &hm RSHFT SQT &lt FNC RET
-	&kp LSHFT   &kp Z       &kp X &kp C &kp V &kp B &none   &kp LCTRL         &kp RCTRL &none  &kp N &kp M  &kp COMMA &kp DOT &kp FSLH      &mt RSHFT SEMI
+	&kp LSHFT   &kp Z       &kp X &kp C &kp V &kp B &ext_power EP_ON  &kp LCTRL         &kp RCTRL &none  &kp N &kp M  &kp COMMA &kp DOT &kp FSLH      &mt RSHFT SEMI
 	              &tog ENC2 &mt LALT RET  &kp LCTRL &mx NAV OSL &kp DEL            &kp BKSP &mo NUM &kp SPC &sl OSL &kp LGUI
 			>;
 
