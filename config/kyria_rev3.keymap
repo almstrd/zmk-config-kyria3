@@ -30,7 +30,7 @@
 #define LR_DOWN LA(DOWN)
 #define LR_UP LA(UP)
 
-&ext_power =EP_ON;
+&ext_power =<EP_ON>;
 
 &left_encoder {
     resolution = <2>;
