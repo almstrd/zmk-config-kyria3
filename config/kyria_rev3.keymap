@@ -31,6 +31,10 @@
 #define LR_DOWN LA(DOWN)
 #define LR_UP LA(UP)
 
+&nice_view_spi {
+    cs-gpios = <&pro_micro 0 GPIO_ACTIVE_HIGH>;  // use D0 (008) for CS niceview + rgb
+};
+
 &left_encoder { resolution = <2>; };
 
 &sk { release-after-ms = <1000>; };
