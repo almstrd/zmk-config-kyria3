@@ -119,14 +119,24 @@
         virserg: virserg {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LALT &kp IT_N1>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_ALT &kp IT_N1>,
+                <&macro_release>,
+                <&kp LEFT_ALT>;
+
             label = "VIRSERG";
         };
 
         virgserg1: virgserg1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LEFT_ALT) &kp IT_N1>;
+            bindings =
+                <&macro_press>,
+                <&kp LS(LEFT_ALT) &kp IT_N1>,
+                <&macro_release>,
+                <&kp RS(LEFT_ALT)>;
+
             label = "VIRGSERG1";
         };
     };
@@ -145,7 +155,7 @@
 &kp ESC    &kp Q       &kp W           &kp E       &kp R             &kp T                                              &kp Y      &U_accents         &I_accents    &O_accents       &kp P       &kp IT_APOSTROPHE
 &lt 4 TAB  &A_accents  &hm LEFT_ALT S  &hm LCMD D  &hm LEFT_SHIFT F  &lt 3 IT_G                                         &kp H      &hm RIGHT_SHIFT J  &hm RCMD K    &hm RIGHT_ALT L  &E_accents  &lt 4 RET
 &kp LSHFT  &kp Z       &kp X           &kp C       &kp V             &kp B          &kp RET  &kp LCTRL  &tog 4  &tog 3  &kp N      &kp M              &kp IT_COMMA  &kp IT_PERIOD    &kp IT_SQT  &kp RCTRL
-                                       &none       &kp LCMD          &kp BACKSPACE  &sl 2    &tog 1     &to 1   &sl 2   &kp SPACE  &kp RCMD           &none
+                                       &none       &kp LCMD          &kp BACKSPACE  &sl 2    &tog 1     &tog 1  &sl 2   &kp SPACE  &kp RCMD           &none
             >;
 
             sensor-bindings =
