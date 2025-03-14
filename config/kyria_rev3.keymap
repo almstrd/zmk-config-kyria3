@@ -106,6 +106,29 @@
             #binding-cells = <0>;
             bindings = <&kp O>, <&kp IT_O_GRAVE>;
         };
+
+        diamonds: diamonds {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DIAMONDS";
+            #binding-cells = <0>;
+            bindings = <&kp LT>, <&kp GT>;
+        };
+    };
+
+    macros {
+        virserg: virserg {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LALT &kp IT_N1>;
+            label = "VIRSERG";
+        };
+
+        virgserg1: virgserg1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LEFT_ALT) &kp IT_N1>;
+            label = "VIRGSERG1";
+        };
     };
 
     keymap {
@@ -119,10 +142,10 @@
             //                     | ENC  |Alt/En| Ctrl |  Nav    |   del   |  |   bksp  |  num    | spc  | Iso   | ENC2  |
 
             bindings = <
-&kp ESC    &kp Q       &kp W           &kp E       &kp R             &kp T                                                                       &kp Y      &U_accents         &I_accents    &O_accents       &kp P       &kp IT_APOSTROPHE
-&lt 2 TAB  &A_accents  &hm LEFT_ALT S  &hm LCMD D  &hm LEFT_SHIFT F  &kp G                                                                       &kp H      &hm RIGHT_SHIFT J  &hm RCMD K    &hm RIGHT_ALT L  &E_accents  &lt 2 RET
-&kp LSHFT  &kp Z       &kp X           &kp C       &kp V             &kp B          &kp RET  &kp LCTRL  &rgb_ug RGB_COLOR_HSB(204,74,55)  &none  &kp N      &kp M              &kp IT_COMMA  &kp IT_PERIOD    &kp IT_SQT  &kp RCTRL
-                                       &none       &kp LCMD          &kp BACKSPACE  &tog 5   &tog 1     &to 1                             &mo 5  &kp SPACE  &kp RCMD           &none
+&kp ESC    &kp Q       &kp W           &kp E       &kp R             &kp T                                              &kp Y      &U_accents         &I_accents    &O_accents       &kp P       &kp IT_APOSTROPHE
+&lt 4 TAB  &A_accents  &hm LEFT_ALT S  &hm LCMD D  &hm LEFT_SHIFT F  &lt 3 IT_G                                         &kp H      &hm RIGHT_SHIFT J  &hm RCMD K    &hm RIGHT_ALT L  &E_accents  &lt 4 RET
+&kp LSHFT  &kp Z       &kp X           &kp C       &kp V             &kp B          &kp RET  &kp LCTRL  &tog 4  &tog 3  &kp N      &kp M              &kp IT_COMMA  &kp IT_PERIOD    &kp IT_SQT  &kp RCTRL
+                                       &none       &kp LCMD          &kp BACKSPACE  &sl 2    &tog 1     &to 1   &sl 2   &kp SPACE  &kp RCMD           &none
             >;
 
             sensor-bindings =
@@ -147,6 +170,34 @@
             sensor-bindings = <&inc_dec_cp C_VOL_DN C_VOL_UP>;
         };
 
+        symbols {
+            bindings = <
+&trans  &trans    &trans     &trans    &kp IT_EXCL  &kp IT_QUESTION                                  &virserg              &kp RG(LEFT_ARROW)  &kp UP_ARROW    &kp RG(RIGHT_ARROW)  &trans  &trans
+&trans  &sk LGUI  &sk LSHFT  &sk LALT  &sk LCTRL    &sk K_APP                                        &virgserg1            &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &trans  &trans
+&trans  &trans    &trans     &trans    &trans       &trans           &trans  &trans  &trans  &trans  &kp IT_DOUBLE_QUOTES  &trans              &trans          &trans               &trans  &trans
+                             &trans    &trans       &trans           &trans  &trans  &trans  &trans  &trans                &trans              &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp LS(TAB) TAB>;
+        };
+
+        num_layer {
+            // ---------------------------------------------------------------------------------------------------------------------------------
+            // | `     |  !  |  +  |  [   |  ]   |  =   |                                          |  %   |  7    |  8    |  9   |   *   | /    |
+            // | #     |  @  |  _  |  (   |  )   |  -   |                                          |  $   |  4    |  5    |  6   |   +   | ---  |
+            // | ~     |  \  |  &  |  {   |  }   |  |   |   ---   |  ---    |  |   ---   |  ---    |  ^   |  1    |  2    |  3   |   -   | ---  |
+            //                     | ENC  | ---  | ---  |   ---   |  ---    |  |   ---   |  ---    | ---  | ---   | ---   |
+
+            bindings = <
+&kp GRAVE  &kp EXCL  &kp PLUS   &kp LBKT  &kp RBKT  &kp EQUAL                                           &kp IT_N0    &kp IT_N1  &kp IT_N2  &kp IT_N3  &kp KP_MULTIPLY  &kp KP_DIVIDE
+&kp HASH   &kp AT    &kp UNDER  &kp LPAR  &kp RPAR  &kp MINUS                                           &kp PRCNT    &kp N4     &kp N5     &kp IT_N6  &kp KP_PLUS      &kp IT_COLON
+&kp TILDE  &kp BSLH  &kp AMPS   &kp LBRC  &kp RBRC  &kp PIPE   &trans  &diamonds  &kp IT_COMMA  &trans  &kp IT_EURO  &kp IT_N7  &kp IT_N8  &kp IT_N9  &kp KP_MINUS     &trans
+                                &trans    &trans    &trans     &trans  &trans     &trans        &trans  &trans       &kp DOT    &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
+        };
+
         function_layer {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // | none  |  F2 | mute| V+   | stp  |   @  |                                       | F12  |  F7   |  F8   |  F9  | Print| none |
@@ -164,34 +215,6 @@
             sensor-bindings =
                 <&inc_dec_cp C_VOL_DN C_VOL_UP>,
                 <&inc_dec_kp 0 0>;
-        };
-
-        num_layer {
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // | `     |  !  |  +  |  [   |  ]   |  =   |                                          |  %   |  7    |  8    |  9   |   *   | /    |
-            // | #     |  @  |  _  |  (   |  )   |  -   |                                          |  $   |  4    |  5    |  6   |   +   | ---  |
-            // | ~     |  \  |  &  |  {   |  }   |  |   |   ---   |  ---    |  |   ---   |  ---    |  ^   |  1    |  2    |  3   |   -   | ---  |
-            //                     | ENC  | ---  | ---  |   ---   |  ---    |  |   ---   |  ---    | ---  | ---   | ---   |
-
-            bindings = <
-&kp GRAVE  &kp EXCL  &kp PLUS   &kp LBKT  &kp RBKT  &kp EQUAL                                  &kp CARET  &kp N7   &kp N8  &kp N9  &kp KP_MULTIPLY  &kp KP_DIVIDE
-&kp HASH   &kp AT    &kp UNDER  &kp LPAR  &kp RPAR  &kp MINUS                                  &kp PRCNT  &kp N4   &kp N5  &kp N6  &kp KP_PLUS      &none
-&kp TILDE  &kp BSLH  &kp AMPS   &kp LBRC  &kp RBRC  &kp PIPE   &trans  &trans  &trans  &trans  &kp DLLR   &kp N1   &kp N2  &kp N3  &kp KP_MINUS     &trans
-                                &trans    &trans    &trans     &trans  &trans  &trans  &trans  &kp N0     &kp DOT  &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp LC(LEFT) LC(RIGHT)>;
-        };
-
-        osl_layer {
-            bindings = <
-&trans  &trans    &trans     &trans    &trans     &trans                                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &sk LGUI  &sk LSHFT  &sk LALT  &sk LCTRL  &sk K_APP                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans    &trans     &trans    &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                             &trans    &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp LS(TAB) TAB>;
         };
 
         enc1_layer {
