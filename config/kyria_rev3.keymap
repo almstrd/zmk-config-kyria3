@@ -126,9 +126,9 @@
             //                     | ENC  |Alt/En| Ctrl |  Nav    |   del   |  |   bksp  |  num    | spc  | Iso   | ENC2  |
 
             bindings = <
-&kp ESC    &kp Q       &kp W           &kp E       &kp R             &kp T                                              &kp Y      &U_accents         &I_accents    &O_accents       &kp P       &kp IT_APOSTROPHE
-&lt 4 TAB  &A_accents  &hm LEFT_ALT S  &hm LCMD D  &hm LEFT_SHIFT F  &lt 3 IT_G                                         &kp H      &hm RIGHT_SHIFT J  &hm RCMD K    &hm RIGHT_ALT L  &E_accents  &lt 4 RET
-&kp LSHFT  &kp Z       &kp X           &kp C       &kp V             &kp B          &kp RET  &kp LCTRL  &tog 4  &tog 3  &kp N      &kp M              &kp IT_COMMA  &kp IT_PERIOD    &kp IT_SQT  &kp RCTRL
+&kp ESC    &kp Q       &kp W           &kp E       &kp R             &kp T                                              &kp Y      &U_accents         &I_accents    &O_accents       &kp P         &kp IT_APOSTROPHE
+&lt 4 TAB  &A_accents  &hm LEFT_ALT S  &hm LCMD D  &hm LEFT_SHIFT F  &lt 3 IT_G                                         &kp H      &hm RIGHT_SHIFT J  &hm RCMD K    &hm RIGHT_ALT L  &E_accents    &lt 4 RET
+&kp LSHFT  &kp Z       &kp X           &kp C       &kp V             &kp B          &kp RET  &kp LCTRL  &tog 4  &tog 3  &kp N      &kp M              &kp IT_COMMA  &kp IT_PERIOD    &kp IT_MINUS  &kp RCTRL
                                        &none       &kp LCMD          &kp BACKSPACE  &sl 2    &tog 1     &tog 1  &sl 2   &kp SPACE  &kp RCMD           &none
             >;
 
