@@ -151,7 +151,9 @@
                              &trans    &trans     &trans     &trans  &trans  &trans  &trans  &trans     &none      &trans
             >;
 
-            sensor-bindings = <&inc_dec_cp C_VOL_DN C_VOL_UP>;
+            sensor-bindings =
+                <&inc_dec_cp C_VOL_DN C_VOL_UP>,
+                <&inc_dec_kp LG(TAB) LG(LS(TAB))>;
         };
 
         symbols {
