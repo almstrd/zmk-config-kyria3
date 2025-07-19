@@ -176,7 +176,7 @@
             bindings = <
 &trans  &trans  &trans        &trans        &trans          &trans                                     &kp PG_UP  &kp LG(LEFT_ARROW)  &kp UP    &kp LG(RIGHT)  &trans  &trans
 &trans  &trans  &kp LEFT_ALT  &kp LEFT_GUI  &kp LEFT_SHIFT  &kp K_APP                                  &kp PG_DN  &kp LEFT            &kp DOWN  &kp RIGHT      &trans  &trans
-&trans  &trans  &trans        &trans        &trans          &trans     &trans  &trans  &trans  &trans  &trans     &trans              &trans    &trans         &trans  &trans
+&trans  &trans  &trans        &trans        &trans          &trans     &trans  &trans  &trans  &trans  &trans     &kp HOME            &trans    &kp END        &trans  &trans
                               &trans        &trans          &trans     &trans  &trans  &trans  &trans  &trans     &none               &trans
             >;
 
@@ -204,10 +204,10 @@
             //                     | ENC  | ---  | ---  |   ---   |  ---    |  |   ---   |  ---    | ---  | ---   | ---   |
 
             bindings = <
-&trans     &kp EXCL     &kp IT_PLUS        &kp IT_EQUAL  &kp IT_SLASH      &brackets                                     &kp IT_N0       &kp IT_N1  &kp IT_N2  &kp IT_N3  &kp KP_MULTIPLY  &kp KP_DIVIDE
-&kp IT_AT  &kp IT_HASH  &kp IT_UNDERSCORE  &kp IT_MINUS  &kp IT_BACKSLASH  &parenth                                      &kp IT_PERCENT  &kp N4     &kp N5     &kp IT_N6  &kp KP_PLUS      &kp IT_COLON
-&trans     &trans       &kp IT_AMPERSAND   &kp IT_PIPE   &kp LEFT_BRACE    &braces    &trans  &diamonds  &trans  &trans  &kp LA(IT_E)    &kp IT_N7  &kp IT_N8  &kp IT_N9  &kp KP_MINUS     &kp IT_COMMA
-                                           &trans        &trans            &trans     &trans  &trans     &trans  &trans  &trans          &kp DOT    &trans
+&trans     &kp EXCL     &kp IT_PLUS        &kp IT_EQUAL          &kp IT_SLASH    &brackets                                     &kp IT_N0       &kp IT_N1  &kp IT_N2  &kp IT_N3  &kp KP_MULTIPLY  &kp KP_DIVIDE
+&kp IT_AT  &kp IT_HASH  &kp IT_UNDERSCORE  &kp IT_MINUS          &kp RA(GRAVE)   &parenth                                      &kp IT_PERCENT  &kp N4     &kp N5     &kp IT_N6  &kp KP_PLUS      &kp IT_COLON
+&trans     &trans       &kp IT_AMPERSAND   &kp RS(IT_BACKSLASH)  &kp LEFT_BRACE  &braces    &trans  &diamonds  &trans  &trans  &kp LA(IT_E)    &kp IT_N7  &kp IT_N8  &kp IT_N9  &kp KP_MINUS     &kp IT_COMMA
+                                           &trans                &trans          &trans     &trans  &trans     &trans  &trans  &trans          &kp DOT    &trans
             >;
 
             sensor-bindings =
