@@ -112,6 +112,27 @@
             #binding-cells = <0>;
             bindings = <&kp GRAVE>, <&kp LS(GRAVE)>;
         };
+
+        brackets: brackets {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BRACKETS";
+            #binding-cells = <0>;
+            bindings = <&kp IT_LEFT_BRACKET>, <&kp IT_RIGHT_BRACKET>;
+        };
+
+        parenth: parenth {
+            compatible = "zmk,behavior-tap-dance";
+            label = "PARENTH";
+            #binding-cells = <0>;
+            bindings = <&kp IT_LEFT_PARENTHESIS>, <&kp IT_RIGHT_PARENTHESIS>;
+        };
+
+        braces: braces {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BRACES";
+            #binding-cells = <0>;
+            bindings = <&kp IT_LEFT_BRACE>, <&kp IT_RIGHT_BRACE>;
+        };
     };
 
     macros {
@@ -126,7 +147,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        default {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   | bksp |
             // | TAB/FN|  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   '   |ent/fn|
@@ -145,7 +166,7 @@
                 <&inc_dec_kp LA(RIGHT_ARROW) LA(LEFT_ARROW)>;
         };
 
-        nav_layer {
+        nav {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // | ---  | Tab-| Tab+| win+ | win- | excel|                                          | Pgup | Home |  Up   | End  | ScrUp | ---  |
             // | ---  | Win | Shft| alt  | ctrl | app  |                                          | Pgdw | Left |  Down | Right| ScrDn | ---  |
@@ -175,7 +196,7 @@
             sensor-bindings = <&inc_dec_kp LS(TAB) TAB>;
         };
 
-        num_layer {
+        num {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // | `     |  !  |  +  |  [   |  ]   |  =   |                                          |  %   |  7    |  8    |  9   |   *   | /    |
             // | #     |  @  |  _  |  (   |  )   |  -   |                                          |  $   |  4    |  5    |  6   |   +   | ---  |
@@ -183,18 +204,18 @@
             //                     | ENC  | ---  | ---  |   ---   |  ---    |  |   ---   |  ---    | ---  | ---   | ---   |
 
             bindings = <
-&kp GRAVE     &kp EXCL     &kp PLUS   &kp IT_EQUAL  &kp LEFT_BRACKET      &kp RIGHT_BRACKET                                         &kp IT_N0    &kp IT_N1  &kp IT_N2  &kp IT_N3  &kp KP_MULTIPLY  &kp KP_DIVIDE
-&kp IT_AT     &kp IT_HASH  &kp UNDER  &kp IT_MINUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                                     &kp PRCNT    &kp N4     &kp N5     &kp IT_N6  &kp KP_PLUS      &kp IT_COLON
-&kp IT_SLASH  &kp BSLH     &kp AMPS   &kp PIPE      &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans  &diamonds  &trans  &trans  &kp IT_EURO  &kp IT_N7  &kp IT_N8  &kp IT_N9  &kp KP_MINUS     &kp IT_COMMA
-                                      &trans        &trans                &trans                 &trans  &trans     &trans  &trans  &trans       &kp DOT    &trans
+&trans     &kp EXCL     &kp IT_PLUS        &kp IT_EQUAL  &kp IT_SLASH      &brackets                                     &kp IT_N0       &kp IT_N1  &kp IT_N2  &kp IT_N3  &kp KP_MULTIPLY  &kp KP_DIVIDE
+&kp IT_AT  &kp IT_HASH  &kp IT_UNDERSCORE  &kp IT_MINUS  &kp IT_BACKSLASH  &parenth                                      &kp IT_PERCENT  &kp N4     &kp N5     &kp IT_N6  &kp KP_PLUS      &kp IT_COLON
+&trans     &trans       &kp IT_AMPERSAND   &kp IT_PIPE   &kp LEFT_BRACE    &braces    &trans  &diamonds  &trans  &trans  &kp LA(IT_E)    &kp IT_N7  &kp IT_N8  &kp IT_N9  &kp KP_MINUS     &kp IT_COMMA
+                                           &trans        &trans            &trans     &trans  &trans     &trans  &trans  &trans          &kp DOT    &trans
             >;
 
             sensor-bindings =
                 <&inc_dec_kp LEFT RIGHT>,
-                <&inc_dec_kp LS(TAB) TAB>;
+                <&inc_dec_kp LG(TAB) TAB>;
         };
 
-        function_layer {
+        fn {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // | none  |  F2 | mute| V+   | stp  |   @  |                                       | F12  |  F7   |  F8   |  F9  | Print| none |
             // | none  | caps| Prev| V-   | Next |   @p |                                       | F11  |  F4   |  F5   |  F6  | Ins  | none |
@@ -202,9 +223,9 @@
             //                     | ---  | ---  | ---  |  ---   |  ---    |  |   ---   |  ---  | ---  | ---   | ---   |
 
             bindings = <
-&trans  &kp F2      &kp C_MUTE    &kp C_VOL_UP  &kp C_STOP    &none                                         &kp F12  &kp F7  &kp F8  &kp F9  &kp PSCRN  &rgb_ug RGB_TOG
-&trans  &kp CAPS    &kp C_PREV    &kp C_VOL_DN  &kp C_NEXT    &none                                         &kp F11  &kp F4  &kp F5  &kp F6  &kp INS    &rgb_ug RGB_BRD
-&trans  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &trans  &trans  &trans  &trans  &kp F10  &kp F1  &kp F2  &kp F3  &trans     &rgb_ug RGB_BRI
+&trans  &kp F2      &kp C_MUTE    &kp C_VOL_UP  &kp C_STOP    &none                                         &kp F12  &kp F7  &kp F8  &kp F9  &trans  &rgb_ug RGB_TOG
+&trans  &kp CAPS    &kp C_PREV    &kp C_VOL_DN  &kp C_NEXT    &none                                         &kp F11  &kp F4  &kp F5  &kp F6  &trans  &rgb_ug RGB_BRD
+&trans  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &trans  &trans  &trans  &trans  &kp F10  &kp F1  &kp F2  &kp F3  &trans  &rgb_ug RGB_BRI
                                   &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans   &trans  &trans
             >;
 
@@ -213,7 +234,7 @@
                 <&inc_dec_kp 0 0>;
         };
 
-        enc1_layer {
+        enc1 {
             bindings = <
 &trans  &trans  &trans          &kp UP    &trans     &trans                                  &trans  &trans    &trans  &trans  &trans  &trans
 &trans  &trans  &kp LEFT_ARROW  &kp DOWN  &kp RIGHT  &trans                                  &trans  &trans    &trans  &trans  &trans  &trans
@@ -221,7 +242,7 @@
                                 &tog 0    &trans     &trans  &trans  &trans  &trans  &trans  &trans  &kp LALT  &tog 5
             >;
 
-            sensor-bindings = <&inc_dec_kp LS(TAB) TAB>;
+            sensor-bindings = <&inc_dec_kp 0 0>;
         };
     };
 };
