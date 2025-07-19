@@ -142,6 +142,13 @@
             bindings = <&sk LS(LEFT_ALT) &kp IT_E>;
             label = "EMAIUSCOLAACCENTATA";
         };
+
+        schwa: schwa {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk IT_E &kp IT_N3>;
+            label = "SCHWA";
+        };
     };
 
     keymap {
@@ -187,7 +194,7 @@
 
         symbols {
             bindings = <
-&trans  &trans    &trans     &trans    &kp IT_EXCL  &kp IT_QUESTION                                     &kp LA(IT_N1)         &kp RG(LEFT_ARROW)  &kp UP_ARROW    &kp RG(RIGHT_ARROW)  &trans  &trans
+&trans  &trans    &trans     &schwa    &kp IT_EXCL  &kp IT_QUESTION                                     &kp LA(IT_N1)         &kp RG(LEFT_ARROW)  &kp UP_ARROW    &kp RG(RIGHT_ARROW)  &trans  &trans
 &trans  &sk LGUI  &sk LSHFT  &sk LALT  &sk LCTRL    &sk K_APP                                           &kp LS(LA(IT_N1))     &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &trans  &trans
 &trans  &trans    &trans     &trans    &trans       &emaiaacc        &trans  &diamonds  &trans  &trans  &kp IT_DOUBLE_QUOTES  &trans              &trans          &trans               &trans  &trans
                              &trans    &trans       &trans           &trans  &trans     &trans  &trans  &trans                &trans              &trans
