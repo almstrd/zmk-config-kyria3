@@ -114,6 +114,15 @@
         };
     };
 
+    macros {
+        emaiaacc: emaiuscolaaccentata {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk LS(LEFT_ALT) &kp IT_E>;
+            label = "EMAIUSCOLAACCENTATA";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -125,7 +134,7 @@
             //                     | ENC  |Alt/En| Ctrl |  Nav    |   del   |  |   bksp  |  num    | spc  | Iso   | ENC2  |
 
             bindings = <
-&kp ESC    &kp Q       &kp W           &kp E       &kp R             &kp T                                              &kp Y      &U_accents         &I_accents    &O_accents       &kp P         &kp IT_APOSTROPHE
+&kp ESC    &kp Q       &kp W           &kp IT_E    &kp R             &kp T                                              &kp Y      &U_accents         &I_accents    &O_accents       &kp P         &kp IT_APOSTROPHE
 &lt 4 TAB  &A_accents  &hm LEFT_ALT S  &hm LCMD D  &hm LEFT_SHIFT F  &lt 3 IT_G                                         &kp H      &hm RIGHT_SHIFT J  &hm RCMD K    &hm RIGHT_ALT L  &E_accents    &lt 4 RET
 &kp LSHFT  &kp Z       &kp X           &kp C       &kp V             &kp B          &kp RET  &kp LCTRL  &tog 4  &tog 3  &kp N      &kp M              &kp IT_COMMA  &kp IT_PERIOD    &kp IT_MINUS  &kp RCTRL
                                        &none       &kp LCMD          &kp BACKSPACE  &sl 2    &tog 1     &tog 1  &sl 2   &kp SPACE  &kp RCMD           &none
@@ -144,23 +153,23 @@
             //                    | ENC  | ---  | ---  |   ---   |  ---    |  |   ---   |  ---    | ---  | ---  | ---   |
 
             bindings = <
-&trans  &kp PTAB  &kp NTAB   &kp PWIN  &kp NWIN   &trans                                     &kp PG_UP  &kp HOME   &kp UP    &kp END    &kp K_SCROLL_UP    &trans
-&trans  &kp LGUI  &kp LSHFT  &kp LALT  &kp LCTRL  &kp K_APP                                  &kp PG_DN  &kp LEFT   &kp DOWN  &kp RIGHT  &kp K_SCROLL_DOWN  &trans
-&trans  &trans    &kp F2     &kp F3    &kp F5     &kp XSLV   &trans  &trans  &trans  &trans  &trans     &kp NDESK  &trans    &kp PDESK  &trans             &trans
-                             &trans    &trans     &trans     &trans  &trans  &trans  &trans  &trans     &none      &trans
+&trans  &trans  &trans        &trans        &trans          &trans                                     &kp PG_UP  &kp LG(LEFT_ARROW)  &kp UP    &kp LG(RIGHT)  &trans  &trans
+&trans  &trans  &kp LEFT_ALT  &kp LEFT_GUI  &kp LEFT_SHIFT  &kp K_APP                                  &kp PG_DN  &kp LEFT            &kp DOWN  &kp RIGHT      &trans  &trans
+&trans  &trans  &trans        &trans        &trans          &trans     &trans  &trans  &trans  &trans  &trans     &trans              &trans    &trans         &trans  &trans
+                              &trans        &trans          &trans     &trans  &trans  &trans  &trans  &trans     &none               &trans
             >;
 
             sensor-bindings =
                 <&inc_dec_cp C_VOL_DN C_VOL_UP>,
-                <&inc_dec_kp LG(TAB) LG(LS(TAB))>;
+                <&inc_dec_kp LA(RIGHT) LA(LEFT_ARROW)>;
         };
 
         symbols {
             bindings = <
-&trans  &trans    &trans     &trans    &kp IT_EXCL  &kp IT_QUESTION                                  &kp LA(IT_N1)         &kp RG(LEFT_ARROW)  &kp UP_ARROW    &kp RG(RIGHT_ARROW)  &trans  &trans
-&trans  &sk LGUI  &sk LSHFT  &sk LALT  &sk LCTRL    &sk K_APP                                        &kp LS(LA(IT_N1))     &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &trans  &trans
-&trans  &trans    &trans     &trans    &trans       &trans           &trans  &trans  &trans  &trans  &kp IT_DOUBLE_QUOTES  &trans              &trans          &trans               &trans  &trans
-                             &trans    &trans       &trans           &trans  &trans  &trans  &trans  &trans                &trans              &trans
+&trans  &trans    &trans     &trans    &kp IT_EXCL  &kp IT_QUESTION                                     &kp LA(IT_N1)         &kp RG(LEFT_ARROW)  &kp UP_ARROW    &kp RG(RIGHT_ARROW)  &trans  &trans
+&trans  &sk LGUI  &sk LSHFT  &sk LALT  &sk LCTRL    &sk K_APP                                           &kp LS(LA(IT_N1))     &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &trans  &trans
+&trans  &trans    &trans     &trans    &trans       &emaiaacc        &trans  &diamonds  &trans  &trans  &kp IT_DOUBLE_QUOTES  &trans              &trans          &trans               &trans  &trans
+                             &trans    &trans       &trans           &trans  &trans     &trans  &trans  &trans                &trans              &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LS(TAB) TAB>;
@@ -174,13 +183,15 @@
             //                     | ENC  | ---  | ---  |   ---   |  ---    |  |   ---   |  ---    | ---  | ---   | ---   |
 
             bindings = <
-&kp GRAVE  &kp EXCL  &kp PLUS   &kp LBKT  &kp RBKT  &kp EQUAL                                           &kp IT_N0    &kp IT_N1  &kp IT_N2  &kp IT_N3  &kp KP_MULTIPLY  &kp KP_DIVIDE
-&kp HASH   &kp AT    &kp UNDER  &kp LPAR  &kp RPAR  &kp MINUS                                           &kp PRCNT    &kp N4     &kp N5     &kp IT_N6  &kp KP_PLUS      &kp IT_COLON
-&kp TILDE  &kp BSLH  &kp AMPS   &kp LBRC  &kp RBRC  &kp PIPE   &trans  &diamonds  &kp IT_COMMA  &trans  &kp IT_EURO  &kp IT_N7  &kp IT_N8  &kp IT_N9  &kp KP_MINUS     &trans
-                                &trans    &trans    &trans     &trans  &trans     &trans        &trans  &trans       &kp DOT    &trans
+&kp GRAVE     &kp EXCL     &kp PLUS   &kp IT_EQUAL  &kp LEFT_BRACKET      &kp RIGHT_BRACKET                                         &kp IT_N0    &kp IT_N1  &kp IT_N2  &kp IT_N3  &kp KP_MULTIPLY  &kp KP_DIVIDE
+&kp IT_AT     &kp IT_HASH  &kp UNDER  &kp IT_MINUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                                     &kp PRCNT    &kp N4     &kp N5     &kp IT_N6  &kp KP_PLUS      &kp IT_COLON
+&kp IT_SLASH  &kp BSLH     &kp AMPS   &kp PIPE      &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans  &diamonds  &trans  &trans  &kp IT_EURO  &kp IT_N7  &kp IT_N8  &kp IT_N9  &kp KP_MINUS     &kp IT_COMMA
+                                      &trans        &trans                &trans                 &trans  &trans     &trans  &trans  &trans       &kp DOT    &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
+            sensor-bindings =
+                <&inc_dec_kp LEFT RIGHT>,
+                <&inc_dec_kp LS(TAB) TAB>;
         };
 
         function_layer {
