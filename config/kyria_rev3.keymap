@@ -110,7 +110,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "DIAMONDS";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE>, <&kp RBKT>;
+            bindings = <&kp GRAVE>, <&kp LS(GRAVE)>;
         };
     };
 
